@@ -1,28 +1,39 @@
 package pl.coderstrust.christmas;
 
 public class ChristmasTree {
-
     public static void main(String[] args) {
         printChristmasTree(8);
         printChristmasTree(15);
     }
 
-    private static void printChristmasTree(int size) {
+    public static void printChristmasTree(int size) {
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j <= size - i; j++) {
-                System.out.print(" ");
-            }
-            for (int k = 0; k < (2 * i + 1); k++) {
-                System.out.print("*");
-            }
-            System.out.println();
+
+            printSpaces(size - i);
+
+            printAsterisks(2 * i + 1);
         }
-        for (int i = size; i <= size; i++) {
-            for (int j = 0; j < size; j++) {
-                System.out.print(" ");
-            }
-            System.out.print("**");
+        printTreeTrunk(size - 1);
+    }
+
+    private static void printSpaces(int numberOfSpaces) {
+        for (int j = 0; j <= numberOfSpaces; j++) {
+            System.out.print(" ");
         }
+    }
+
+    private static void printAsterisks(int numberOfAsterisks) {
+        for (int k = 0; k < numberOfAsterisks; k++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
+    private static void printTreeTrunk(int heightOfTree) {
+        for (int l = 0; l <= heightOfTree; l++) {
+            System.out.print(" ");
+        }
+        System.out.print("**");
         System.out.println();
     }
 }
