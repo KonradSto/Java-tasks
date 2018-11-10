@@ -3,8 +3,10 @@ package pl.coderstrust.christmas;
 public class ChristmasTree {
     public static void main(String[] args) {
         printChristmasTree(8);
+        System.out.print("**");
         System.out.println();
         printChristmasTree(15);
+        System.out.print("**");
     }
 
     public static void printChristmasTree(int size) {
@@ -32,6 +34,5 @@ public class ChristmasTree {
         for (int l = 0; l <= heightOfTree; l++) {
             System.out.print(" ");
         }
-        System.out.print("**");
     }
 }
