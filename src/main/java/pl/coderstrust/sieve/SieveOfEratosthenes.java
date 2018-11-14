@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class SieveOfEratosthenes {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(sieve(100)));
-
+        int[] result = sieve(100);
+        System.out.println(Arrays.toString(result));
     }
 
     public static int[] sieve(int maximumNumber) {
