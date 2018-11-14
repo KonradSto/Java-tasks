@@ -5,7 +5,8 @@ import java.util.Arrays;
 public class SelectionSort {
     public static void main(String[] args) {
         int[] unsortedArray = {8, 9, -1, -5, 0};
-        System.out.println(Arrays.toString(sort(unsortedArray)));
+        int[] sortedArray = sort(unsortedArray);
+        System.out.println(Arrays.toString(unsortedArray));
     }
 
     public static int[] sort(int[] array) {
@@ -23,4 +24,10 @@ public class SelectionSort {
         }
         return array;
     }
+
+   /* private static void swapElementsInArray(int[] array, int currentMinimum, int indexOfCurrentElement) {
+        int temp = currentMinimum;
+        currentMinimum = array[indexOfCurrentElement];
+        array[indexOfCurrentElement] = temp;
+    }*/
 }
