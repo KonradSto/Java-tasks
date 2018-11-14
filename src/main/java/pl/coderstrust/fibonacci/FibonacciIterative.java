@@ -9,7 +9,7 @@ public class FibonacciIterative {
     }
 
     public static long fibonacci(int fibonacciNumberInOrder) {
-        if (fibonacciNumberInOrder < 0) {
+        if (fibonacciNumberInOrder <= 0) {
             return -1;
         }
         int firstNumber = 0;
