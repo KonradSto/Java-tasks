@@ -12,30 +12,43 @@ public class SieveOfEratosthenes {
 
     public static int[] sieve(int maximumNumber) {
         int[] array = new int[maximumNumber];
-        for (int i = 0; i <= maximumNumber - 2; i++) {
+        createInitialArray(array, maximumNumber);
+        removeMultiples(array, maximumNumber);
+        return extractPrimeNumbers(array, maximumNumber);
+    }
+
+    private static void createInitialArray(int[] array, int arraySize) {
+        for (int i = 2; i <= arraySize - 2; i++) {
             array[i] = i;
         }
+    }
+
+    private static void removeMultiples(int[] arrayToClean, int maximumNumber) {
         for (int i = 2; i < maximumNumber; i++) {
-            // removeMultiplies(array, i)
-            for (int n = i + i; n < array.length; n += i) {
-                array[n] = 0;
+            for (int n = i + i; n < arrayToClean.length; n += i) {
+                arrayToClean[n] = MARKER;
             }
-            // private static void removeMultiplies(int[] arrayToClean, int number)
         }
+    }
+
+    private static int[] extractPrimeNumbers(int[] sizeOfPrimeArray, int maximumNumber) {
         int primesCount = 0;
         for (int i = 0; i < maximumNumber - 2; i++) {
-            if (array[i] != 0) {
+            if (sizeOfPrimeArray[i] != MARKER) {
                 primesCount++;
             }
         }
+        return primeNumbersResult(sizeOfPrimeArray, primesCount, maximumNumber);
+    }
+
+    private static int[] primeNumbersResult(int[] primeArray, int primesCount, int maximumNumber) {
         int[] result = new int[primesCount];
         int position = 0;
         for (int i = 0; i < maximumNumber - 2; i++) {
-            if (array[i] != 0) {
-                result[position++] = array[i];
+            if (primeArray[i] != MARKER) {
+                result[position++] = primeArray[i];
             }
         }
         return result;
     }
 }
-
