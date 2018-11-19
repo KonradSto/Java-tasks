@@ -34,4 +34,3 @@ public class SelectionSort {
         array[currentMinimumIndex] = temp;
     }
 }
-
