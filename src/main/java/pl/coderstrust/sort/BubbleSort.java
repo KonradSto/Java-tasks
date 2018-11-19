@@ -10,14 +10,15 @@ public class BubbleSort {
     }
 
     public static int[] sort(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 1; j < (array.length) - i; j++) {
-                if (array[j - 1] > array[j]) {
-                    swapElementsInArray(array, j - 1, j);
+        int[] arrayToSort = array.clone();
+        for (int i = 0; i < arrayToSort.length; i++) {
+            for (int j = 1; j < (arrayToSort.length) - i; j++) {
+                if (arrayToSort[j - 1] > arrayToSort[j]) {
+                    swapElementsInArray(arrayToSort, j - 1, j);
                 }
             }
         }
-        return array;
+        return arrayToSort;
     }
 
     private static void swapElementsInArray(int[] array, int indexOfFirstElement, int indexOfSecondElement) {
