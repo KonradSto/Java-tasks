@@ -6,7 +6,7 @@ public class SieveOfEratosthenes {
     private final static int MARKER = 0;
 
     public static void main(String[] args) {
-        int[] result = sieve(100);
+        int[] result = sieve(20);
         System.out.println(Arrays.toString(result));
     }
 
@@ -14,11 +14,11 @@ public class SieveOfEratosthenes {
         int[] array = new int[maximumNumber];
         createInitialArray(array, maximumNumber);
         removeMultiples(array, maximumNumber);
-        return extractPrimeNumbers(array, maximumNumber);
+        return extractPrimeNumbers(array);
     }
 
-    private static void createInitialArray(int[] array, int arraySize) {
-        for (int i = 2; i <= arraySize - 2; i++) {
+    private static void createInitialArray(int[] array, int maximumNumber) {
+        for (int i = 0; i < maximumNumber; i++) {
             array[i] = i;
         }
     }
@@ -31,24 +31,24 @@ public class SieveOfEratosthenes {
         }
     }
 
-    private static int[] extractPrimeNumbers(int[] sizeOfPrimeArray, int maximumNumber) {
-        int primesCount = 0;
-        for (int i = 0; i < maximumNumber - 2; i++) {
-            if (sizeOfPrimeArray[i] != MARKER) {
-                primesCount++;
-            }
-        }
-        return primeNumbersResult(sizeOfPrimeArray, primesCount, maximumNumber);
-    }
-
-    private static int[] primeNumbersResult(int[] primeArray, int primesCount, int maximumNumber) {
-        int[] result = new int[primesCount];
-        int position = 0;
-        for (int i = 0; i < maximumNumber - 2; i++) {
+    private static int[] extractPrimeNumbers(int[] primeArray) {
+        //getCountOfPrimeNumbers(primeArray);
+        int[] result = new int[getCountOfPrimeNumbers(primeArray)];
+        for (int i = 2, j = 0; i < primeArray.length; i++) {
             if (primeArray[i] != MARKER) {
-                result[position++] = primeArray[i];
+                result[j++] = primeArray[i];
             }
         }
         return result;
+    }
+
+    private static int getCountOfPrimeNumbers(int[] array) {
+        int primesCount = 0;
+        for (int i = 2; i < array.length; i++) {
+            if (array[i] != MARKER) {
+                primesCount++;
+            }
+        }
+        return primesCount;
     }
 }
