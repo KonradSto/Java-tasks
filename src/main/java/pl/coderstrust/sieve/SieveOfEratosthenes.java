@@ -11,8 +11,7 @@ public class SieveOfEratosthenes {
     }
 
     public static int[] sieve(int maximumNumber) {
-        int[] array = new int[maximumNumber];
-        createInitialArray(array, maximumNumber);
+        int[] array = createInitialArray(maximumNumber);
         removeMultiples(array, maximumNumber);
         return extractPrimeNumbers(array);
     }
