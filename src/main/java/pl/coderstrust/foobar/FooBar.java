@@ -1,30 +1,32 @@
 package pl.coderstrust.foobar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FooBar {
 
     public static void main(String[] args) {
-        printFooBar();
-        System.out.print(printFooBar());
+        getFooBar(-1);
     }
 
-    public static ArrayList<String> printFooBar() {
-        ArrayList<String> fooBarList = new ArrayList<String>();
-        fooBarList.add("0");
-        for (int i = 1; i <= 100; i++) {
-            fooBarList.add(i + " ");
+    public static List<String> getFooBar(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Size cannot be lower than 0");
+        }
+        List<String> fooBar = new ArrayList<>();
+        StringBuilder item = new StringBuilder();
+        for (int i = 0; i <= size; i++) {
+            item.append(i);
             if (i % 3 == 0) {
-                fooBarList.set(i, i + " Foo");
+                item.append("Foo");
             }
             if (i % 5 == 0) {
-                fooBarList.set(i, i + " Bar");
+                item.append("Bar");
             }
-            if (i % 15 == 0) {
-                fooBarList.set(i, i + " FooBar");
-            }
+            fooBar.add(item.toString());
+            item.delete(0, item.length());
         }
-        return fooBarList;
+        return fooBar;
     }
 }
 
