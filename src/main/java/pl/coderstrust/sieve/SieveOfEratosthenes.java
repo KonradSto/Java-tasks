@@ -33,7 +33,6 @@ public class SieveOfEratosthenes {
     }
 
     private static int[] extractPrimeNumbers(int[] primeArray) {
-        //getCountOfPrimeNumbers(primeArray);
         int[] result = new int[getCountOfPrimeNumbers(primeArray)];
         for (int i = 2, j = 0; i < primeArray.length; i++) {
             if (primeArray[i] != MARKER) {
