@@ -6,7 +6,7 @@ public class SieveOfEratosthenes {
     private final static int MARKER = 0;
 
     public static void main(String[] args) {
-        int[] result = sieve(20);
+        int[] result = sieve(100);
         System.out.println(Arrays.toString(result));
     }
 
@@ -16,10 +16,12 @@ public class SieveOfEratosthenes {
         return extractPrimeNumbers(array);
     }
 
-    private static void createInitialArray(int[] array, int maximumNumber) {
+    private static int[] createInitialArray(int maximumNumber) {
+        int[] array = new int[maximumNumber];
         for (int i = 0; i < maximumNumber; i++) {
             array[i] = i;
         }
+        return array;
     }
 
     private static void removeMultiples(int[] arrayToClean, int maximumNumber) {
