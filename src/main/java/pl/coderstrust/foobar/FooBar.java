@@ -6,7 +6,7 @@ import java.util.List;
 public class FooBar {
 
     public static void main(String[] args) {
-        getFooBar(-1);
+        System.out.print(getFooBar(15));
     }
 
     public static List<String> getFooBar(int size) {
@@ -15,7 +15,8 @@ public class FooBar {
         }
         List<String> fooBar = new ArrayList<>();
         StringBuilder item = new StringBuilder();
-        for (int i = 0; i <= size; i++) {
+        fooBar.add(0, "0");
+        for (int i = 1; i <= size; i++) {
             item.append(i);
             if (i % 3 == 0) {
                 item.append("Foo");
@@ -29,5 +30,3 @@ public class FooBar {
         return fooBar;
     }
 }
-
-
