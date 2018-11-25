@@ -30,7 +30,7 @@ public class FooBarTest {
 
         // When
         try {
-            List<String> actual = FooBar.getFooBar(size);
+            FooBar.getFooBar(size);
             Assert.fail("Exception should be thrown!");
         } catch (IllegalArgumentException anIllegalArgumentException) {
             assertEquals("Size cannot be lower than 0", anIllegalArgumentException.getMessage());
