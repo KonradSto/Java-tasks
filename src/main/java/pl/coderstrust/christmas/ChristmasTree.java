@@ -1,37 +1,50 @@
 package pl.coderstrust.christmas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChristmasTree {
     public static void main(String[] args) {
-        printChristmasTree(8);
-        System.out.println();
-        printChristmasTree(15);
     }
 
-    public static void printChristmasTree(int size) {
+    public static List<String> getChristmasTree(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Size cannot be lower than 0");
+        }
+        List<String> christmasTree = new ArrayList<>();
+        StringBuilder item = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            printSpaces(size - i);
-            printAsterisks(2 * i + 1);
-            System.out.println();
+            item.append(addSpaces(size - i));
+            item.append(addAsterisks(2 * i + 1));
+            christmasTree.add(item.toString());
+            item.delete(0, item.length());
         }
-        printTreeTrunk(size - 1);
+        christmasTree.add(addTreeTrunk(size - 1));
+        return christmasTree;
     }
 
-    private static void printSpaces(int numberOfSpaces) {
+    private static String addSpaces(int numberOfSpaces) {
+        String spaces = "";
         for (int j = 0; j <= numberOfSpaces; j++) {
-            System.out.print(" ");
+            spaces += " ";
         }
+        return spaces;
     }
 
-    private static void printAsterisks(int numberOfAsterisks) {
+    private static String addAsterisks(int numberOfAsterisks) {
+        String asterisks = "";
         for (int k = 0; k < numberOfAsterisks; k++) {
-            System.out.print("*");
+            asterisks += "*";
         }
+        return asterisks;
     }
 
-    private static void printTreeTrunk(int heightOfTree) {
+    private static String addTreeTrunk(int heightOfTree) {
+        String trunk = "";
         for (int l = 0; l <= heightOfTree; l++) {
-            System.out.print(" ");
+            trunk += " ";
         }
-        System.out.print("**");
+        trunk += "**";
+        return trunk;
     }
 }
