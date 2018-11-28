@@ -11,6 +11,9 @@ import static org.junit.Assert.assertEquals;
 
 public class FooBarTest {
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     @Test
     public void shouldReturnCorrectFooBar() {
         // Given
@@ -24,11 +27,8 @@ public class FooBarTest {
         assertEquals(expected, actual);
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Test
-    public void shouldThrowExceptionForInvalidArgument() throws IllegalArgumentException {
+    public void shouldThrowExceptionForInvalidArgument() {
         int size = -1;
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Size cannot be lower than 0");
