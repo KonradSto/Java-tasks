@@ -1,7 +1,8 @@
 package pl.coderstrust.pascal;
 
-import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,9 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class PascalTriangleTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldReturnChristmasTree() {
@@ -24,16 +28,10 @@ public class PascalTriangleTest {
     }
 
     @Test
-    public void shouldTestException() {
-        // Given
+    public void shouldThrowExceptionForInvalidArgument() {
         int num = -1;
-
-        // When
-        try {
-            PascalTriangle.getPascalTriangle(num);
-            Assert.fail("Exception should be thrown!");
-        } catch (IllegalArgumentException anIllegalArgumentException) {
-            assertEquals("Size cannot be lower than 0", anIllegalArgumentException.getMessage());
-        }
+        thrown.expectMessage("Size cannot be lower than 0");
+        thrown.expect(IllegalArgumentException.class);
+        PascalTriangle.getPascalTriangle(num);
     }
 }
