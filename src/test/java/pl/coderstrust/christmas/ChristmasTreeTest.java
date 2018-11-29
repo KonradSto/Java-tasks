@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -19,6 +20,19 @@ public class ChristmasTreeTest {
         // Given
         int size = 4;
         List<String> expected = Arrays.asList("     *", "    ***", "   *****", "  *******", "    **");
+
+        // When
+        List<String> actual = ChristmasTree.getChristmasTree(size);
+
+        // Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnEmptyList() {
+        // Given
+        int size = 0;
+        List<String> expected = Collections.emptyList();
 
         // When
         List<String> actual = ChristmasTree.getChristmasTree(size);

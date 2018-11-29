@@ -1,50 +1,58 @@
 package pl.coderstrust.christmas;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ChristmasTree {
     public static void main(String[] args) {
+        System.out.println(getChristmasTree(5));
     }
 
     public static List<String> getChristmasTree(int size) {
         if (size < 0) {
             throw new IllegalArgumentException("Size cannot be lower than 0");
         }
+        if (size == 0) {
+            return Collections.emptyList();
+        }
         List<String> christmasTree = new ArrayList<>();
         StringBuilder item = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            item.append(addSpaces(size - i));
-            item.append(addAsterisks(2 * i + 1));
+            item.append(getSpaces(size - i));
+            item.append(getAsterisks(2 * i + 1));
             christmasTree.add(item.toString());
             item.delete(0, item.length());
         }
-        christmasTree.add(addTreeTrunk(size - 1));
+        christmasTree.add(getTreeTrunk(size - 1));
         return christmasTree;
     }
 
-    private static String addSpaces(int numberOfSpaces) {
-        String spaces = "";
+    private static String getSpaces(int numberOfSpaces) {
+        StringBuilder spacesBuilder = new StringBuilder();
         for (int j = 0; j <= numberOfSpaces; j++) {
-            spaces += " ";
+            spacesBuilder.append(" ");
         }
+        String spaces = spacesBuilder.toString();
         return spaces;
     }
 
-    private static String addAsterisks(int numberOfAsterisks) {
-        String asterisks = "";
+    private static String getAsterisks(int numberOfAsterisks) {
+        StringBuilder asterisksBuilder = new StringBuilder();
         for (int k = 0; k < numberOfAsterisks; k++) {
-            asterisks += "*";
+            asterisksBuilder.append("*");
         }
+        String asterisks = asterisksBuilder.toString();
         return asterisks;
     }
 
-    private static String addTreeTrunk(int heightOfTree) {
-        String trunk = "";
+    private static String getTreeTrunk(int heightOfTree) {
+        StringBuilder trunkBuilder = new StringBuilder();
         for (int l = 0; l <= heightOfTree; l++) {
-            trunk += " ";
+            trunkBuilder.append(" ");
         }
-        trunk += "**";
+        trunkBuilder.append("**");
+        String trunk = trunkBuilder.toString();
         return trunk;
     }
 }
