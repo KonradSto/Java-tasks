@@ -2,24 +2,18 @@ package pl.coderstrust.multiplication;
 
 public class MultiplicationTable {
     public static void main(String[] args) {
-        printMultiplicationTable(5);
-        printMultiplicationTable(9);
-        printMultiplicationTable(12);
     }
 
-    public static void printMultiplicationTable(int size) {
-        System.out.print("      ");
-        for (int i = 1; i <= size; i++) {
-            System.out.printf("%6d", i);
+    public static int[][] getMultiplicationTable(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Size cannot be lower than 0");
         }
-        System.out.println();
+        int[][] multiplicationTable = new int[size][size];
         for (int i = 1; i <= size; i++) {
-            System.out.printf("%6d", i);
             for (int j = 1; j <= size; j++) {
-                int result = i * j;
-                System.out.printf("%6d", result);
+                multiplicationTable[i - 1][j - 1] = i * j;
             }
-            System.out.println();
         }
+        return multiplicationTable;
     }
 }
