@@ -1,7 +1,6 @@
 package pl.coderstrust.christmas;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ChristmasTree {
@@ -10,11 +9,8 @@ public class ChristmasTree {
     }
 
     public static List<String> getChristmasTree(int size) {
-        if (size < 0) {
+        if (size <= 0) {
             throw new IllegalArgumentException("Size cannot be lower than 0");
-        }
-        if (size == 0) {
-            return Collections.emptyList();
         }
         List<String> christmasTree = new ArrayList<>();
         StringBuilder item = new StringBuilder();
@@ -33,8 +29,7 @@ public class ChristmasTree {
         for (int j = 0; j <= numberOfSpaces; j++) {
             spacesBuilder.append(" ");
         }
-        String spaces = spacesBuilder.toString();
-        return spaces;
+        return spacesBuilder.toString();
     }
 
     private static String getAsterisks(int numberOfAsterisks) {
@@ -42,8 +37,7 @@ public class ChristmasTree {
         for (int k = 0; k < numberOfAsterisks; k++) {
             asterisksBuilder.append("*");
         }
-        String asterisks = asterisksBuilder.toString();
-        return asterisks;
+        return asterisksBuilder.toString();
     }
 
     private static String getTreeTrunk(int heightOfTree) {
@@ -52,7 +46,6 @@ public class ChristmasTree {
             trunkBuilder.append(" ");
         }
         trunkBuilder.append("**");
-        String trunk = trunkBuilder.toString();
-        return trunk;
+        return trunkBuilder.toString();
     }
 }
