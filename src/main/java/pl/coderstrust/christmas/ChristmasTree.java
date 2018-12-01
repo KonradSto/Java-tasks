@@ -1,37 +1,51 @@
 package pl.coderstrust.christmas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChristmasTree {
     public static void main(String[] args) {
-        printChristmasTree(8);
-        System.out.println();
-        printChristmasTree(15);
+        System.out.println(getChristmasTree(5));
     }
 
-    public static void printChristmasTree(int size) {
+    public static List<String> getChristmasTree(int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException("Size cannot be lower than 0");
+        }
+        List<String> christmasTree = new ArrayList<>();
+        StringBuilder item = new StringBuilder();
         for (int i = 0; i < size; i++) {
-            printSpaces(size - i);
-            printAsterisks(2 * i + 1);
-            System.out.println();
+            item.append(getSpaces(size - i));
+            item.append(getAsterisks(2 * i + 1));
+            christmasTree.add(item.toString());
+            item.delete(0, item.length());
         }
-        printTreeTrunk(size - 1);
+        christmasTree.add(getTreeTrunk(size - 1));
+        return christmasTree;
     }
 
-    private static void printSpaces(int numberOfSpaces) {
+    private static String getSpaces(int numberOfSpaces) {
+        StringBuilder spacesBuilder = new StringBuilder();
         for (int j = 0; j <= numberOfSpaces; j++) {
-            System.out.print(" ");
+            spacesBuilder.append(" ");
         }
+        return spacesBuilder.toString();
     }
 
-    private static void printAsterisks(int numberOfAsterisks) {
+    private static String getAsterisks(int numberOfAsterisks) {
+        StringBuilder asterisksBuilder = new StringBuilder();
         for (int k = 0; k < numberOfAsterisks; k++) {
-            System.out.print("*");
+            asterisksBuilder.append("*");
         }
+        return asterisksBuilder.toString();
     }
 
-    private static void printTreeTrunk(int heightOfTree) {
+    private static String getTreeTrunk(int heightOfTree) {
+        StringBuilder trunkBuilder = new StringBuilder();
         for (int l = 0; l <= heightOfTree; l++) {
-            System.out.print(" ");
+            trunkBuilder.append(" ");
         }
-        System.out.print("**");
+        trunkBuilder.append("**");
+        return trunkBuilder.toString();
     }
 }
