@@ -41,4 +41,3 @@ public class MergeSort implements SortingMethod {
         }
     }
 }
-

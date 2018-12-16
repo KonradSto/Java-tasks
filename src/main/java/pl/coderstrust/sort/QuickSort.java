@@ -39,4 +39,3 @@ public class QuickSort implements SortingMethod {
         return r.nextInt((highIndex - lowIndex) + 1) + lowIndex;
     }
 }
-
