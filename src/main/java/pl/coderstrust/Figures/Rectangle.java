@@ -1,16 +1,20 @@
 package pl.coderstrust.Figures;
 
 public class Rectangle implements Figure {
-    private double a;
-    private double b;
+    private double sideA;
+    private double sideB;
 
-    public Rectangle(double a, double b) {
-        this.a = a;
-        this.b = b;
+    public Rectangle(double sideA, double sideB) {
+        if (sideA<0 || sideB<0){
+            throw new IllegalArgumentException("Both sides must be greater than 0");
+        }
+        this.sideA = sideA;
+        this.sideB = sideB;
     }
 
     @Override
     public double calculateArea() {
-        return a * b;
+
+        return sideA * sideB;
     }
 }
