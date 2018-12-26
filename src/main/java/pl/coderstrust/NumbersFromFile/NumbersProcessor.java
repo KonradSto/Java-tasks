@@ -3,7 +3,7 @@ package pl.coderstrust.NumbersFromFile;
 import java.util.Scanner;
 
 public class NumbersProcessor {
-    public String processLine(String line) {
+    public static String processLine(String line) {
         if (!lineValidation(line)) {
             return "";
         }
@@ -24,7 +24,7 @@ public class NumbersProcessor {
         return builder.toString();
     }
 
-    private boolean lineValidation(String line) {
+    private static boolean lineValidation(String line) {
         if (line.equals("")) {
             return false;
         } else {

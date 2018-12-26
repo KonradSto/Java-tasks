@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class FileProcessor {
 
 
-    public List<String> readLinesFromFile(String fileName) throws FileNotFoundException {
+    public static List<String> readLinesFromFile(String fileName) throws FileNotFoundException {
         Scanner input = new Scanner(new File(fileName));
         List<String> lines = new ArrayList<>();
         while (input.hasNextLine()) {
