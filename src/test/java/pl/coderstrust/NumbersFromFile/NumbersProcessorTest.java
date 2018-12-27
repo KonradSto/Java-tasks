@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 public class NumbersProcessorTest {
 
+    private static NumbersProcessor numbersProcessor = new NumbersProcessor();
+
     @Test
     public void shouldReturnProcessedLine(){
         //given
@@ -14,7 +16,7 @@ public class NumbersProcessorTest {
         String expected = "1+2+3=6";
 
         //when
-        String actual = NumbersProcessor.processLine(line);
+        String actual = numbersProcessor.processLine(line);
 
         //then
         assertThat(actual, is(expected));

@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 
 public class FileProcessorTest {
 
+    private static FileProcessor fileProcessor = new FileProcessor();
+
     @Test
     public void shouldReadLinesFromFile() throws FileNotFoundException {
 
@@ -23,7 +25,7 @@ public class FileProcessorTest {
         expected.add("file");
 
         //when
-        List<String> actual = FileProcessor.readLinesFromFile("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\input_simple.txt");
+        List<String> actual = fileProcessor.readLinesFromFile("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\input_simple.txt");
 
         //then
         assertThat(actual, is(expected));

@@ -3,7 +3,7 @@ package pl.coderstrust.NumbersFromFile;
 import java.util.Scanner;
 
 public class NumbersProcessor {
-    public static String processLine(String line) {
+    public String processLine(String line) {
         if (!lineValidation(line)) {
             return "";
         }
