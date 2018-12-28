@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class Streams {
     public static void main(String[] args) throws IOException {
         List<String> lines = Files.lines(Paths.get("D:\\Dev\\solutions-9-konrad\\src\\main\\resources\\lines.txt"))
-                .filter(line -> line.matches("\\d+"))
+                .filter(line -> line.matches("^[\\d\\s]+"))
                 .collect(Collectors.toList());
         System.out.println(lines);
     }
