@@ -28,7 +28,9 @@ public class Processor {
         List<String> linesFromFile = fileProcessor.readLinesFromFile(fileName);
         List<String> resultLines = new ArrayList<>();
         for (String line : linesFromFile) {
-            resultLines.add(numbersProcessor.processLine(line));
+            if() {
+                resultLines.add(numbersProcessor.processLine(line));
+            }
         }
         fileProcessor.writeLinesToFile(resultLines, resultFileName);
     }

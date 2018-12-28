@@ -4,31 +4,29 @@ import java.util.Scanner;
 
 public class NumbersProcessor {
     public String processLine(String line) {
-        if (!lineValidation(line)) {
+        if (!Linevalidator.isLineValid(line)) {
             return "";
         }
-        if (lineValidation(line)) {
-            line = line.replaceAll("[^0-9]+", " ");
+        Scanner scanner = new Scanner(line);
+        StringBuilder numbers = new StringBuilder();
+        int sum = 0;
+        while (scanner.hasNextInt()) {
+            int nextInt = scanner.nextInt();
+            sum += nextInt;
+            numbers.append(nextInt);
+            if(scanner.hasNextInt()){
+                numbers.append("+");
+            }
         }
-        Scanner scan = new Scanner(line);
-        StringBuilder builder = new StringBuilder();
-        int result = 0;
-        while (scan.hasNextInt()) {
-            int nextInt = scan.nextInt();
-            builder.append(nextInt).append("+");
-            result += nextInt;
-        }
-        scan.close();
-        builder.deleteCharAt(builder.length() - 1);
-        builder.append("=").append(result);
-        return builder.toString();
+        scanner.close();
+        numbers.append("=").append(sum);
+        return numbers.toString();
     }
 
-    private static boolean lineValidation(String line) {
-        if (line.equals("")) {
+    private static boolean isLineValid(String line) {
+        if (line == null || line.trim().isEmpty()) {
             return false;
-        } else {
-            return true;
         }
+            return line.matches("^[\\d\\s]+");
     }
 }

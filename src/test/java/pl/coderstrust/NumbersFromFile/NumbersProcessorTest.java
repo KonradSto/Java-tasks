@@ -12,7 +12,7 @@ public class NumbersProcessorTest {
     @Test
     public void shouldReturnProcessedLine(){
         //given
-        String line = "one 1  two 2  three 3";
+        String line = "1  2  3";
         String expected = "1+2+3=6";
 
         //when
