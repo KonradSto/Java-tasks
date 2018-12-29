@@ -28,7 +28,7 @@ public class Processor {
         List<String> linesFromFile = fileProcessor.readLinesFromFile(fileName);
         List<String> resultLines = new ArrayList<>();
         for (String line : linesFromFile) {
-            if() {
+            if(LineValidator.isLineValid(line)) {
                 resultLines.add(numbersProcessor.processLine(line));
             }
         }

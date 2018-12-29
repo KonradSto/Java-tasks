@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class NumbersProcessor {
     public String processLine(String line) {
-        if (!Linevalidator.isLineValid(line)) {
+        if (!LineValidator.isLineValid(line)) {
             return "";
         }
         Scanner scanner = new Scanner(line);
@@ -21,12 +21,5 @@ public class NumbersProcessor {
         scanner.close();
         numbers.append("=").append(sum);
         return numbers.toString();
-    }
-
-    private static boolean isLineValid(String line) {
-        if (line == null || line.trim().isEmpty()) {
-            return false;
-        }
-            return line.matches("^[\\d\\s]+");
     }
 }

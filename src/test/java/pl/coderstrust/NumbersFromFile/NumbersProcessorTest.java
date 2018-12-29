@@ -21,4 +21,17 @@ public class NumbersProcessorTest {
         //then
         assertThat(actual, is(expected));
     }
+
+    @Test
+    public void shouldReturnEmptyLine(){
+        //given
+        String line = "one 1  2  3";
+        String expected = "";
+
+        //when
+        String actual = numbersProcessor.processLine(line);
+
+        //then
+        assertThat(actual, is(expected));
+    }
 }
