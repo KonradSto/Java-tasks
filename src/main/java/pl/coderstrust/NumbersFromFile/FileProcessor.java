@@ -20,7 +20,7 @@ public class FileProcessor {
 
     public void writeLinesToFile(List<String> resultLines, String resultFileName) {
         try {
-            PrintWriter output = new PrintWriter(new File(resultFileName + ".txt"));
+            PrintWriter output = new PrintWriter(new File(resultFileName));
             output.println(resultLines);
             output.close();
         } catch (IOException ex) {
