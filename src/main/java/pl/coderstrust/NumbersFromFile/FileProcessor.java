@@ -21,7 +21,10 @@ public class FileProcessor {
     public void writeLinesToFile(List<String> resultLines, String resultFileName) {
         try {
             PrintWriter output = new PrintWriter(new File(resultFileName));
-            output.println(resultLines);
+            int sizeOfList = resultLines.size();
+            for (int i=0; i<sizeOfList; i++){
+                output.println(resultLines.get(i));
+            }
             output.close();
         } catch (IOException ex) {
             System.out.printf("ERROR: %s\n", ex);
