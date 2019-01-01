@@ -1,11 +1,15 @@
 package pl.coderstrust.Figures;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+@RunWith(JUnitParamsRunner.class)
 public class RectangleTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -24,9 +28,10 @@ public class RectangleTest {
     }
 
     @Test
-    public void shouldThrowExceptionForInvalidArgument() {
+    @Parameters({"-1, 4", "4, -1"})
+    public void shouldThrowExceptionForInvalidArgument(double sideA, double sideB) {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Both sides must be greater than 0");
-        new Rectangle(-1, 3);
+        thrown.expectMessage("Sides must be greater than 0");
+        new Rectangle(sideA, sideB);
     }
 }

@@ -26,7 +26,7 @@ public class SquareTest {
     @Test
     public void shouldThrowExceptionForInvalidArgument() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Both sides must be greater than 0");
+        thrown.expectMessage("Sides must be greater than 0");
         new Square(-1);
     }
 }

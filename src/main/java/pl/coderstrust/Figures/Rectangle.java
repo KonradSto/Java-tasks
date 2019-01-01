@@ -6,7 +6,7 @@ public class Rectangle implements Figure {
 
     public Rectangle(double sideA, double sideB) {
         if (sideA<=0 || sideB<=0){
-            throw new IllegalArgumentException("Both sides must be greater than 0");
+            throw new IllegalArgumentException("Sides must be greater than 0");
         }
         this.sideA = sideA;
         this.sideB = sideB;
