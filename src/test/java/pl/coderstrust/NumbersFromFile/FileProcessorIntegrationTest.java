@@ -28,8 +28,10 @@ public class FileProcessorIntegrationTest {
 
     @Test
     public void shouldWriteCorrectOutputFile() throws IOException {
-        //when
+        //given
         byte [] expected = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\expected.txt"));
+
+        //when
         byte [] actual = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\output.txt"));
 
         //then
