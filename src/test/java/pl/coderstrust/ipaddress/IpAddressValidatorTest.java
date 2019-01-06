@@ -1,4 +1,4 @@
-package pl.coderstrust.regex;
+package pl.coderstrust.ipaddress;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
@@ -11,21 +11,21 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 
 @RunWith(JUnitParamsRunner.class)
-public class RegexTest {
+public class IpAddressValidatorTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
     @Ignore
-    public void ChecksAllPossibleCorrectCombinations() {
+    public void shouldReturnTrueForAllCombinationsOfIpAddress() {
         String ipAddress;
         for (int i = 0; i <= 255; i++) {
             for (int j = 0; j <= 255; j++) {
                 for (int k = 0; k <= 255; k++) {
                     for (int l = 0; l <= 255; l++) {
                         ipAddress = String.format("%d.%d.%d.%d", i, j, k, l);
-                        assertTrue(Regex.isIpAddress(ipAddress));
+                        assertTrue(IpAddressValidator.isIpAddress(ipAddress));
                     }
                 }
             }
@@ -35,35 +35,30 @@ public class RegexTest {
     @Test
     @Parameters({"192.0.2.255", "0.192.2.255", "255.255.255.255", "0.0.0.0"})
     public void shouldReturnTrueForCorrectIpAddress(String ipAddress) {
-        assertTrue(Regex.isIpAddress(ipAddress));
+        assertTrue(IpAddressValidator.isIpAddress(ipAddress));
     }
 
     @Test
     @Parameters({"1920.0.2.255", "00.192.2.255", "255.two.255.255", "-1.0.0.0"})
     public void shouldReturnFalseForIncorrectIpAddress(String ipAddress) {
-        assertFalse(Regex.isIpAddress(ipAddress));
+        assertFalse(IpAddressValidator.isIpAddress(ipAddress));
     }
 
     @Test
-    public void shouldThrowExceptionForNull() {
+    public void shouldThrowExceptionForNullAsIpAddress() {
         String ipAddress = null;
         thrown.expectMessage("IP Address cannot be a null");
-        thrown.expect(NullPointerException.class);
-        Regex.isIpAddress(ipAddress);
+        thrown.expect(IllegalArgumentException.class);
+        IpAddressValidator.isIpAddress(ipAddress);
     }
 
     @Test
-    public void ChecksAllPossibleCorrectCombinationsForIndividualPartsSeparately() {
+    @Parameters({"%d.1.1.1", "1.%d.1.1", "1.1.%d.1", "1.1.1.%d"})
+    public void smartTestForValidIpAddresses(String ipAddressTemplate) {
         String ipAddress;
         for (int i = 0; i <= 255; i++) {
-            ipAddress = String.format("%d.%d.%d.%d", i, 1, 1, 1);
-            assertTrue(Regex.isIpAddress(ipAddress));
-            ipAddress = String.format("%d.%d.%d.%d", 1, i, 1, 1);
-            assertTrue(Regex.isIpAddress(ipAddress));
-            ipAddress = String.format("%d.%d.%d.%d", 1, 1, i, 1);
-            assertTrue(Regex.isIpAddress(ipAddress));
-            ipAddress = String.format("%d.%d.%d.%d", 1, 1, 1, i);
-            assertTrue(Regex.isIpAddress(ipAddress));
+            ipAddress = String.format(ipAddressTemplate, i);
+            assertTrue(IpAddressValidator.isIpAddress(ipAddress));
         }
     }
 }
