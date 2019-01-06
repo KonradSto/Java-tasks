@@ -1,11 +1,11 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 public class Rectangle implements Figure {
     private double sideA;
     private double sideB;
 
     public Rectangle(double sideA, double sideB) {
-        if (sideA<=0 || sideB<=0){
+        if (sideA <= 0 || sideB <= 0){
             throw new IllegalArgumentException("Sides must be greater than 0");
         }
         this.sideA = sideA;

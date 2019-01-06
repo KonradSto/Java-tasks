@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

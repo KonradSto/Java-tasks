@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 public class Trapezoid implements Figure{
     private double bottomBase;
@@ -6,7 +6,7 @@ public class Trapezoid implements Figure{
     private double height;
 
     public Trapezoid(double bottomBase, double topBase, double height) {
-        if (bottomBase<=0 || topBase<=0 || height<=0){
+        if (bottomBase <= 0 || topBase <= 0 || height <= 0){
             throw new IllegalArgumentException("Both bases and height must be greater than 0");
         }
         this.bottomBase = bottomBase;

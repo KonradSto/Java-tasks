@@ -1,4 +1,4 @@
-package pl.coderstrust.Figures;
+package pl.coderstrust.figures;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,7 +26,7 @@ public class SquareTest {
     @Test
     public void shouldThrowExceptionForInvalidArgument() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Sides must be greater than 0");
+        thrown.expectMessage("Side must be greater than 0");
         new Square(-1);
     }
 }
