@@ -1,21 +1,17 @@
-package pl.coderstrust.NumbersFromFile;
+package pl.coderstrust.io;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class FileProcessorIntegrationTest {
+public class ProcessorTestIT {
 
     private static FileProcessor fileProcessor = new FileProcessor();
     private static NumbersProcessor numbersProcessor = new NumbersProcessor();
@@ -23,16 +19,16 @@ public class FileProcessorIntegrationTest {
 
     @BeforeClass
     public static void createsOutputFileBeforeTest() throws FileNotFoundException {
-        processor.process("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\input.txt", "src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\output.txt");
+        processor.process("src\\test\\resources\\pl\\coderstrust\\io\\input.txt", "src\\test\\resources\\pl\\coderstrust\\io\\output.txt");
     }
 
     @Test
-    public void shouldWriteCorrectOutputFile() throws IOException {
+    public void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() throws IOException {
         //given
-        byte [] expected = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\expected.txt"));
+        byte [] expected = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\io\\expected.txt"));
 
         //when
-        byte [] actual = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\output.txt"));
+        byte [] actual = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\io\\output.txt"));
 
         //then
         assertThat(actual,is(expected));

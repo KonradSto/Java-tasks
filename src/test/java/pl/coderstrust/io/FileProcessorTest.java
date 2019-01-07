@@ -1,4 +1,4 @@
-package pl.coderstrust.NumbersFromFile;
+package pl.coderstrust.io;
 
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class FileProcessorTest {
         expected.add("file");
 
         //when
-        List<String> actual = fileProcessor.readLinesFromFile("src\\test\\resources\\pl\\coderstrust\\NumbersFromFile\\input_simple.txt");
+        List<String> actual = fileProcessor.readLinesFromFile("src\\test\\resources\\pl\\coderstrust\\io\\input_simple.txt");
 
         //then
         assertThat(actual, is(expected));

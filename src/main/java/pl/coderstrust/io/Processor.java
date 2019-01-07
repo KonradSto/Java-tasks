@@ -1,4 +1,4 @@
-package pl.coderstrust.NumbersFromFile;
+package pl.coderstrust.io;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,11 +9,6 @@ public class Processor {
         NumbersProcessor numbersProcessor = new NumbersProcessor();
         FileProcessor fileProcessor = new FileProcessor();
         List<String> linesFromFile = fileProcessor.readLinesFromFile("input.txt");
-        List<String> resultLines = new ArrayList<>();
-        for (String line : linesFromFile) {
-            resultLines.add(numbersProcessor.processLine(line));
-        }
-        System.out.println(resultLines);
     }
 
     private NumbersProcessor numbersProcessor;
@@ -28,7 +23,7 @@ public class Processor {
         List<String> linesFromFile = fileProcessor.readLinesFromFile(fileName);
         List<String> resultLines = new ArrayList<>();
         for (String line : linesFromFile) {
-            if(LineValidator.isLineValid(line)) {
+            if (LineValidator.isLineValid(line)) {
                 resultLines.add(numbersProcessor.processLine(line));
             }
         }

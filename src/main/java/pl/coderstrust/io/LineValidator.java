@@ -1,4 +1,4 @@
-package pl.coderstrust.NumbersFromFile;
+package pl.coderstrust.io;
 
 public class LineValidator {
     public static boolean isLineValid(String line) {

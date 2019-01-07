@@ -1,4 +1,4 @@
-package pl.coderstrust.NumbersFromFile;
+package pl.coderstrust.io;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
