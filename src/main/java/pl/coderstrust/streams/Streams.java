@@ -3,6 +3,7 @@ package pl.coderstrust.streams;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,10 +11,17 @@ import java.util.stream.Stream;
 
 public class Streams {
     public static void main(String[] args) throws IOException {
-        List<String> stream = Files.lines(Paths.get("D:\\Dev\\solutions-9-konrad\\src\\main\\resources\\lines.txt"))
+        List<String> result = new ArrayList<>();
+        Files.lines(Paths.get("D:\\Dev\\solutions-9-konrad\\src\\main\\resources\\lines.txt"))
                 .filter(line -> line.matches("^[\\d\\s]+"))
-                //.flatMap(string -> Arrays.stream(string.split("\\s")))
-                .collect(Collectors.toList());
-        System.out.println(stream);
+                .map(line -> line.trim().split("\\s+"))
+                .forEach(arrayOfNumbers -> {
+                    long sumOfNumber = Arrays.stream(arrayOfNumbers)
+                            .mapToLong(Long::parseLong)
+                            .sum();
+                    String line = Arrays.stream(arrayOfNumbers)
+                            .;
+                    result.add();
+                });
     }
 }
