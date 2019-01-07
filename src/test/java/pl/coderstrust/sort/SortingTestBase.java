@@ -1,12 +1,16 @@
 package pl.coderstrust.sort;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.Random;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(JUnitParamsRunner.class)
 public abstract class SortingTestBase {
     public abstract SortingMethod getSortingMethod();
 
@@ -40,11 +44,8 @@ public abstract class SortingTestBase {
     }
 
     @Test
-    public void shouldSortSimpleArray() {
-        // given
-        int[] given = new int[]{5, 4, 3, 2, 1};
-        int[] expected = new int[]{1, 2, 3, 4, 5};
-
+    @Parameters()
+    public void shouldSortSimpleArray(int[] given) {
         // when
         long startTime = System.currentTimeMillis();
         int[] result = getSortingMethod().sort(given);
@@ -53,6 +54,6 @@ public abstract class SortingTestBase {
         System.out.println(endTime - startTime);
 
         // then
-        assertArrayEquals(expected, result);
+        assertTrue(isSorted(result));
     }
 }
