@@ -19,9 +19,10 @@ public class Streams {
                     long sumOfNumber = Arrays.stream(arrayOfNumbers)
                             .mapToLong(Long::parseLong)
                             .sum();
-                    String line = Arrays.stream(arrayOfNumbers)
-                            .;
-                    result.add();
+                    String line = Arrays.stream(arrayOfNumbers).map(String::trim).collect(Collectors.joining("+"));
+
+                    result.add(line + "=" + sumOfNumber);
                 });
+        System.out.println(result);
     }
 }
