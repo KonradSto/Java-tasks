@@ -7,8 +7,7 @@ import org.junit.runner.RunWith;
 
 import java.util.Random;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(JUnitParamsRunner.class)
 public abstract class SortingTestBase {
@@ -44,8 +43,8 @@ public abstract class SortingTestBase {
     }
 
     @Test
-    @Parameters()
-    public void shouldSortSimpleArray(int[] given) {
+    @Parameters(method = "simpleArrayParameters")
+    public void shouldSortSimpleArray(int[] given, int [] expected) {
         // when
         long startTime = System.currentTimeMillis();
         int[] result = getSortingMethod().sort(given);
@@ -54,6 +53,31 @@ public abstract class SortingTestBase {
         System.out.println(endTime - startTime);
 
         // then
-        assertTrue(isSorted(result));
+        assertArrayEquals(expected,result);
+    }
+
+    public Object simpleArrayParameters(){
+
+        int[]given1 = {};
+        int[]expected1 = {};
+        Object[] pair1 = {given1, expected1};
+
+        int[]given2 = {0};
+        int[]expected2 = {0};
+        Object[] pair2 = {given2, expected2};
+
+        int[]given3 = {0, 0, 0, 0};
+        int[]expected3 = {0, 0, 0, 0};
+        Object[] pair3 = {given3, expected3};
+
+        int[]given4 = {1, 2, 3, 4};
+        int[]expected4 = {1, 2, 3, 4};
+        Object[] pair4 = {given4, expected4};
+
+        int[]given5 = {1, 3, 2, 4};
+        int[]expected5 = {1, 2, 3, 4};
+        Object[] pair5 = {given5, expected5};
+
+        return new Object[]{pair1, pair2, pair3, pair4, pair5};
     }
 }
