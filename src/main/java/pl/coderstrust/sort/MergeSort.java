@@ -20,7 +20,6 @@ public class MergeSort implements SortingMethod {
         }
         sort(l);
         sort(r);
-
         merge(array, l, r, mid, n - mid);
         return array;
     }
