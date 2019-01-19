@@ -8,19 +8,17 @@ public class QuickSort implements SortingMethod {
         return array;
     }
 
-    private void quickSort(int[] array, int lowIndex, int highIndex) {
-        if (lowIndex < highIndex) {
-            int partitionIndex = partition(array, lowIndex, highIndex);
-            quickSort(array, lowIndex, partitionIndex - 1);
-            quickSort(array, partitionIndex + 1, highIndex);
+    private void quickSort(int[] array, int lowerIndex, int higherIndex) {
+        if (lowerIndex < higherIndex) {
+            int partitionIndex = partition(array, lowerIndex, higherIndex);
+            quickSort(array, lowerIndex, partitionIndex);
+            quickSort(array, partitionIndex + 1, higherIndex);
         }
     }
 
-
-    private int partition(int[] array, int lowIndex, int highIndex) {
-        int pivot = getPivot(array, lowIndex, highIndex);
-        int i = lowIndex - 1;
-        int j = highIndex + 1;
+    private int partition(int[] array, int lowerIndex, int higherIndex) {
+        int pivot = getPivot(array, lowerIndex, higherIndex);
+        int i = lowerIndex - 1, j = higherIndex + 1;
         while (true) {
             do {
                 i++;
@@ -28,8 +26,9 @@ public class QuickSort implements SortingMethod {
             do {
                 j--;
             } while (array[j] > pivot);
-            if (i < j) swap(array, i, j);
-            else return j;
+            if (i < j) {
+                swap(array, i, j);
+            } else return j;
         }
     }
 
