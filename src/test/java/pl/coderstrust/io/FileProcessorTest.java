@@ -1,6 +1,8 @@
 package pl.coderstrust.io;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,24 +13,33 @@ import static org.junit.Assert.*;
 
 public class FileProcessorTest {
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     private static FileProcessor fileProcessor = new FileProcessor();
 
     @Test
-    public void shouldReadLinesFromFile() throws FileNotFoundException {
+    public void shouldThrowIllegalArgumentExceptionForNullFilePathWhenReadingFromFile() throws FileNotFoundException {
+        String filePath = null;
+        thrown.expectMessage("File path cannot be null");
+        thrown.expect(IllegalArgumentException.class);
+        fileProcessor.readLinesFromFile(filePath);
+    }
 
-        //given
-        List<String> expected = new ArrayList<>();
-        expected.add("this");
-        expected.add("is");
-        expected.add("simple");
-        expected.add("input");
-        expected.add("file");
+    @Test
+    public void shouldThrowIllegalArgumentExceptionForNullLinesListToWrite() throws FileNotFoundException {
+        List<String> lines = null;
+        thrown.expectMessage("Lines to write cannot be null");
+        thrown.expect(IllegalArgumentException.class);
+        fileProcessor.writeLinesToFile(lines, "Random/File/Path");
+    }
 
-        //when
-        List<String> actual = fileProcessor.readLinesFromFile("src\\test\\resources\\pl\\coderstrust\\io\\input_simple.txt");
-
-        //then
-        assertThat(actual, is(expected));
-
+    @Test
+    public void shouldThrowIllegalArgumentExceptionForNullFilePathWhenWritingToFile() throws FileNotFoundException {
+        List<String> lines = new ArrayList<>();
+        String filePath = null;
+        thrown.expectMessage("File path cannot be null");
+        thrown.expect(IllegalArgumentException.class);
+        fileProcessor.writeLinesToFile(lines, filePath);
     }
 }
