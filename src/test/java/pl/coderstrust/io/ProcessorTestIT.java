@@ -18,17 +18,17 @@ public class ProcessorTestIT {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    FileProcessor fileProcessor = new FileProcessor();
-    NumbersProcessor numbersProcessor = new NumbersProcessor();
-    Processor processor = new Processor(numbersProcessor, fileProcessor);
-
     @Test
     public void shouldProcessProvidedInputFileAndSaveResultToProvidedOutputFile() throws IOException {
         //given
+        FileProcessor fileProcessor = new FileProcessor();
+        NumbersProcessor numbersProcessor = new NumbersProcessor();
+        Processor processor = new Processor(numbersProcessor, fileProcessor);
 
         byte[] expected = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\io\\expected.txt"));
 
         //when
+        processor.process("src\\test\\resources\\pl\\coderstrust\\io\\input.txt", "src\\test\\resources\\pl\\coderstrust\\io\\output.txt");
         byte[] actual = Files.readAllBytes(Paths.get("src\\test\\resources\\pl\\coderstrust\\io\\output.txt"));
 
         //then
@@ -37,6 +37,8 @@ public class ProcessorTestIT {
 
     @Test
     public void shouldThrowIllegalArgumentExceptionForNullArgumentInNumbersProcessor() {
+        FileProcessor fileProcessor = new FileProcessor();
+        NumbersProcessor numbersProcessor;
         numbersProcessor = null;
         thrown.expectMessage("Number processor argument cannot be null");
         thrown.expect(IllegalArgumentException.class);
@@ -45,6 +47,8 @@ public class ProcessorTestIT {
 
     @Test
     public void shouldThrowIllegalArgumentExceptionForNullArgumentInFileProcessor() {
+        FileProcessor fileProcessor;
+        NumbersProcessor numbersProcessor = new NumbersProcessor();
         fileProcessor = null;
         thrown.expectMessage("File processor argument cannot be null");
         thrown.expect(IllegalArgumentException.class);
@@ -53,16 +57,20 @@ public class ProcessorTestIT {
 
     @Test
     public void shouldThrowIllegalArgumentExceptionForNullInputFilePathArgument() throws FileNotFoundException {
+        FileProcessor fileProcessor = new FileProcessor();
+        NumbersProcessor numbersProcessor = new NumbersProcessor();
+        Processor processor = new Processor(numbersProcessor, fileProcessor);
         String inputFilePath = null;
-        String outputFilePath = null;
         thrown.expectMessage("Input file path cannot be null");
-        //thrown.expectMessage("Output file path cannot be null");
         thrown.expect(IllegalArgumentException.class);
-        processor.process(inputFilePath, "Random/Output?Path");
+        processor.process(inputFilePath, "Random/Output/Path");
     }
 
     @Test
     public void shouldThrowIllegalArgumentExceptionForNullOutputFilePathArgument() throws FileNotFoundException {
+        FileProcessor fileProcessor = new FileProcessor();
+        NumbersProcessor numbersProcessor = new NumbersProcessor();
+        Processor processor = new Processor(numbersProcessor, fileProcessor);
         String outputFilePath = null;
         thrown.expectMessage("Output file path cannot be null");
         thrown.expect(IllegalArgumentException.class);

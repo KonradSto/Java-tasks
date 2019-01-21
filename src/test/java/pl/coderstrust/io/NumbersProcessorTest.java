@@ -15,7 +15,9 @@ public class NumbersProcessorTest {
     @Test
     @Parameters({"1 2 3, 1+2+3=6", "3 2 1, 3+2+1=6", "one 2 three, ", "12+3, "})
     public void shouldReturnSumOfNumbersForProvidedLine(String line, String expected){
+        //Given
         NumbersProcessor numbersProcessor = new NumbersProcessor();
+
         //when
         String actual = numbersProcessor.processLine(line);
 
