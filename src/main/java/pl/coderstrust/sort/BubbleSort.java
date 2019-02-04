@@ -1,22 +1,19 @@
 package pl.coderstrust.sort;
 
-import java.util.Arrays;
+public class BubbleSort implements SortingMethod {
 
-public class BubbleSort {
-    public static void main(String[] args) {
-        int[] originalArray = {8, 6, -7, -14, 99, 0, 15};
-        int[] sortedArray = sort(originalArray);
-        System.out.println(Arrays.toString(sortedArray));
-    }
-
-    public static int[] sort(int[] array) {
+    public int[] sort(int[] array) {
         int[] arrayToSort = array.clone();
+        boolean isSwapped;
         for (int i = 0; i < arrayToSort.length; i++) {
+            isSwapped = false;
             for (int j = 1; j < (arrayToSort.length) - i; j++) {
                 if (arrayToSort[j - 1] > arrayToSort[j]) {
                     swapElementsInArray(arrayToSort, j - 1, j);
+                    isSwapped = true;
                 }
             }
+            if(!isSwapped) break;
         }
         return arrayToSort;
     }
